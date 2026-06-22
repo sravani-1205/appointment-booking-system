@@ -1,6 +1,8 @@
-app.py
-auth.py
-database.py
-models.py
-requirements.txt
-schemas.py
+fastapi
+uvicorn
+sqlalchemy
+pymysql
+python-jose
+passlib
+bcrypt
+python-dotenv
