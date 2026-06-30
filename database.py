@@ -1,12 +1,9 @@
-# database.py
-
 import os
 from dotenv import load_dotenv
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# Load .env file
 load_dotenv()
 
 DATABASE_URL = (
@@ -19,7 +16,10 @@ DATABASE_URL = (
 
 engine = create_engine(
     DATABASE_URL,
-    pool_pre_ping=True
+    pool_pre_ping=True,
+    connect_args={
+        "ssl": {}
+    }
 )
 
 SessionLocal = sessionmaker(
@@ -31,7 +31,6 @@ SessionLocal = sessionmaker(
 Base = declarative_base()
 
 
-# Dependency for FastAPI
 def get_db():
     db = SessionLocal()
     try:
