@@ -23,9 +23,12 @@ engine = create_engine(
     pool_pre_ping=True,
     connect_args={
         "ssl": {}
-    }
+    },
+    echo=True
 )
 
+print("DB_HOST:", os.getenv("DB_HOST"))
+print("DATABASE_URL:", DATABASE_URL.replace(os.getenv("DB_PASSWORD"), "********"))
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
